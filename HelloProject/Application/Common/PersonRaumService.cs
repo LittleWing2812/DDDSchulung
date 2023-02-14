@@ -18,15 +18,15 @@ namespace HelloProject.Application.Common
 
         public void PersonZuRaum(int personId, int raumId)
         {
+            if (personRepository.Get(personId) == null)
+            {
+            }
+            
+            if( raumRepository.Get(raumId) == null)
+            {
+            }
+
             raumRepository.Get(raumId).AddPerson(personId);
-        }
-
-        public void PersonZuRaum(string ldap, string raumNummerValue)
-        {
-            var person = personRepository.Get(ldap);
-            var raum = raumRepository.Get(new RaumNummer(raumNummerValue));
-
-            PersonZuRaum(person.Id, raum.Id);
         }
 
         public RaumDto Get(int raumId)

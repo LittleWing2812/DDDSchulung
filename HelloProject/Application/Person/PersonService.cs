@@ -12,7 +12,7 @@ namespace HelloProject.Application
             this.personRepository = personRepository;
        }
 
-        public Person Create(IPersonRepository personRepository, string ldap, string name)
+        public Person Create(string ldap, string name)
         {
             if (personRepository.Exists(ldap))
             {
