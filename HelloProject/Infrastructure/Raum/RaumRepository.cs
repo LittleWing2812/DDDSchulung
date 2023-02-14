@@ -1,9 +1,6 @@
 ﻿using HelloProject.Domain;
-using HelloProject.Domain.Person;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace HelloProject.Infrastructure
 {
@@ -12,27 +9,27 @@ namespace HelloProject.Infrastructure
     {
         public bool Exists(RaumNummer nr)
         {
-            return GetRaum(nr) != null;
+            return Get(nr) != null;
         }
 
-        public Raum GetRaum(RaumNummer nr)
+        public Raum Get(RaumNummer nr)
         {
             return this.FirstOrDefault(raum => raum.RaumNummer.Value.Equals(nr.Value));
         }
 
-        public Raum GetRaum(int id)
+        public Raum Get(int id)
         {
             return this.FirstOrDefault(raum => raum.Id == id);
         }
 
-        void SaveRaum(Raum raum)
+        public void Save(Raum raum)
         {
             Add(raum);
         }
 
-        public bool RaumHasPerson(Person person)
+        public bool HasPerson(int personId)
         {
-            return this.Any(raum => raum.HasPerson(person));
+            return this.Any(raum => raum.HasPerson(personId));
         }
     }
 }

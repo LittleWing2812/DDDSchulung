@@ -10,18 +10,19 @@ namespace HelloProject.Domain
         public int Id { get; private set; }
         public RaumNummer RaumNummer { get; private set; }
         public Name Name { get; private set; }
-        private List<Person.Person> PersonenListe { get; set; }
+        public List<int> PersonenIdListe { get; private set; }
 
-        public void AddPerson(Person.Person person)
+        public void AddPerson(int personId)
         {
-            PersonenListe.Add(person);
+            if (HasPerson(personId))
+            {
+                throw new Exception("person existiert");
+            }
+            PersonenIdListe.Add(personId);
         }
-        public bool HasPerson(Person.Person person)
+        public bool HasPerson(int personId)
         {
-            return PersonenListe.Any(item => item.Equals(person));
+            return PersonenIdListe.Contains(personId);
         }
-
-
-
     }
 }

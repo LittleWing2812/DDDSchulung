@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HelloProject.Domain.Person
+namespace HelloProject.Domain
 {
     public class Person
     {
@@ -21,6 +21,7 @@ namespace HelloProject.Domain.Person
         {
             return  string.Equals(LDAP, obj.LDAP);
         }
+        public int Id { get; private set; }
 
         public string LDAP { get; private set; }
         public string Name { get; private set; }
